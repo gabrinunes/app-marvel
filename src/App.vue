@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+   <div id="app">
+     <app-input @Buscar="ReceivingData"></app-input>
+     <app-character
+     :Pesquisa="dados"
+     >
+     </app-character>
+     <hr>
+     <app-comics
+     :Pesquisa="dados" 
+     ></app-comics>
+   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AppInput from './components/Input'
+import AppCharacter from './components/Character'
+import AppComics from './components/Comics'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    components:{AppInput,AppCharacter,AppComics},
+    data(){
+      return {
+        dados : ''
+      }
+    },
+    methods:{
+      ReceivingData(name){
+        this.dados = name
+      }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
