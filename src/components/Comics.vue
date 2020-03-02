@@ -1,16 +1,16 @@
 <template>
  <div class="container">
-   <b-carousel
+   <b-carousel 
    id="carousel-fade"
     style="text-shadow: 0px 0px 2px #000"
     fade
     indicators
    >
-   <b-carousel-slide v-for="comics in comics" :key="comics.index"
+     <b-carousel-slide v-for="comics in comics" :key="comics.index"
      :caption="comics.title"
      :img-src="comics.thumbnail.path + '/portrait_incredible.' + comics.thumbnail.extension"
    ></b-carousel-slide>
-     
+
    </b-carousel>
 </div>
 </template>

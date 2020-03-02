@@ -25,7 +25,7 @@ export default {
         },
         methods:{
           Buscar(data){
-            this.$emit('Buscar', data)
+            this.$emit('Buscar',data)
           }
         }
 }

@@ -20,7 +20,7 @@ export default {
     components:{AppInput,AppCharacter,AppComics},
     data(){
       return {
-        dados : ''
+        dados : '',
       }
     },
     methods:{

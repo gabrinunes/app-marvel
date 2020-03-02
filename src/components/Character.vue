@@ -1,6 +1,10 @@
 <template>
  <div>
-   <b-card v-for="character in character" :key="character.index"
+      <h3 v-show="!retorno">Não retornou personagens ou quadrinhos relacionados :(</h3>
+      <b-spinner v-if="loading"></b-spinner>
+      <div v-else>
+       <h3 v-show="!sucesso">Done</h3>
+       <b-card v-for="character in character" :key="character.index"
   no-body class="overflow-hidden" style="max-width: 540px;">
     <b-row no-gutters>
       <b-col md="6">
@@ -15,7 +19,8 @@
       </b-col>
     </b-row>
   </b-card>
-</div> 
+      </div>
+</div>
 </template>
 
 <script>
@@ -24,7 +29,10 @@ export default {
   props:['Pesquisa'],
      data(){
        return{
-         character :''
+         character :'',
+         loading:false,
+         retorno: true,
+         sucesso:true
        }
      },
      watch:{
@@ -34,10 +42,20 @@ export default {
      },
      methods:{
       getCharacter(){
+        this.loading = true
         axios.searchCharacter(this.Pesquisa, res =>{
           this.character = res.data.data.results
-          console.log(this.character)
-        })
+          this.loading = false
+          if(this.character ==""){
+            this.retorno = false
+          }else{
+            this.sucesso = false
+          }
+          console.log(this.loading)
+        }), error =>{
+           this.loading = false;
+           console.log(error)
+        }
       }
      }
 }
