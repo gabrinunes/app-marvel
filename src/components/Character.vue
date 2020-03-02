@@ -38,6 +38,7 @@ export default {
      watch:{
       Pesquisa: function (){
       this.getCharacter()
+      this.retorno = true
       }
      },
      methods:{
