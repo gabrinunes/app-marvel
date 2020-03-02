@@ -1,18 +1,19 @@
 <template>
- <div class="container">
-   <b-carousel 
-   id="carousel-fade"
-    style="text-shadow: 0px 0px 2px #000"
-    fade
-    indicators
-   >
-     <b-carousel-slide v-for="comics in comics" :key="comics.index"
-     :caption="comics.title"
-     :img-src="comics.thumbnail.path + '/portrait_incredible.' + comics.thumbnail.extension"
-   ></b-carousel-slide>
-
-   </b-carousel>
-</div>
+<div>
+     <b-card-group deck>
+     <div class="mb-2" v-for="comics in comics" :key="comics.name">
+       <b-card
+    :title="comics.title" 
+    :img-src="comics.thumbnail.path + '/portrait_incredible.' + comics.thumbnail.extension" 
+    img-alt="Image" 
+    img-top >
+      <b-card-text>
+       {{comics.description}}
+      </b-card-text>
+    </b-card>
+     </div>
+  </b-card-group>
+     </div>
 </template>
 <script>
 import axios from '../services/axios'
@@ -40,9 +41,8 @@ export default {
 </script>
 
 <style  scoped>
- .container{
-   max-width:30rem;
-   max-height:15rem; 
+ .card{
+   max-width:25rem;
  }
 </style>
 

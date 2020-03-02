@@ -1,6 +1,6 @@
 <template>
 <body>
- <div class="jumbotron ">
+ <div class="jumbotron "> 
     <div class="container">
       <h1 class="header-main-title">Marvel Comics Character Search</h1>
       <form id="connectionForm" v-on:submit.prevent>
