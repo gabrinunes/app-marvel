@@ -1,7 +1,7 @@
 <template>
 <div>
      <b-card-group deck>
-     <div class="mb-2" v-for="comics in comics" :key="comics.name">
+     <div class="mb-2" v-for="comics in list" :key="comics.id">
        <b-card
     :title="comics.title" 
     :img-src="comics.thumbnail.path + '/portrait_incredible.' + comics.thumbnail.extension" 
@@ -13,6 +13,11 @@
     </b-card>
      </div>
   </b-card-group>
+  <b-pagination v-show="pagination"
+  :total-rows="rows"
+  v-model="currentPage"
+  :per-page="perPage"
+  ></b-pagination>
      </div>
 </template>
 <script>
@@ -21,8 +26,23 @@ export default {
     props:['Pesquisa'],
     data(){
        return {
-         comics:[]
-       }
+         comics:[],
+         currentPage: 1,
+         perPage: 3,
+         pagination: false
+         }
+    },
+    computed:{
+      list(){
+         const items = this.comics
+         return items.slice(
+           (this.currentPage - 1) * this.perPage,
+           this.currentPage * this.perPage
+         )
+      },
+      rows(){
+        return this.comics.length
+      }
     },
     watch:{
      Pesquisa: function () {
@@ -33,11 +53,17 @@ export default {
       BuscaQuadrinhos(){
         axios.searchComics(this.Pesquisa,res=>{
           this.comics = res.data.data.results
-          console.log(this.comics)
-        })
+          this.pagination = true
+          if(this.comics ==""){
+            this.pagination = false
+          }
+        }),err =>{
+          console.log(err);
+        }
+        }
+        
       }
     }
-}
 </script>
 
 <style  scoped>
