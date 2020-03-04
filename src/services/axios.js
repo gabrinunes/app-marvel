@@ -22,6 +22,14 @@ export default {
       }
     })
   },
+  getComicsBYID :(ComicsID,callback) =>{
+     const URL_COMICS_BY_ID = `${URL_BASE_MARVEL}comics/${ComicsID}?apikey=${API_KEY}&ts=${TS}&hash=${HASH}`
+     axios.get(URL_COMICS_BY_ID).then(comics =>  {
+       if(callback){
+         callback(comics)
+       }
+     })
+  },
   searchCharacter: (name, callback) => {
     const URL_SEARCH_CHARACTER = `${URL_BASE_MARVEL}characters?ts=${TS}&apikey=${API_KEY}&hash=${HASH}&name=${name}`
     axios.get(URL_SEARCH_CHARACTER).then(character => {

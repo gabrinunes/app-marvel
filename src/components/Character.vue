@@ -15,6 +15,7 @@
           <b-card-text>
             {{character.description}}
           </b-card-text>
+          <b-button @click="openDetails(character.id)">Detalhes</b-button>  
         </b-card-body>
       </b-col>
     </b-row>
@@ -57,6 +58,9 @@ export default {
            this.loading = false;
            console.log(error)
         }
+      },
+      openDetails(id){
+       this.$emit('openDetails',id)
       }
      }
 }

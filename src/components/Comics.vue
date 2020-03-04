@@ -10,6 +10,7 @@
       <b-card-text>
        {{comics.description}}
       </b-card-text>
+      <b-button @click="openDetails(comics.id)">Detalhes</b-button>  
     </b-card>
      </div>
   </b-card-group>
@@ -60,6 +61,9 @@ export default {
         }),err =>{
           console.log(err);
         }
+        },
+        openDetails(id){
+          this.$emit('openDetails',id)
         }
         
       }
