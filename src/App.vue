@@ -1,6 +1,6 @@
 <template>
    <div id="app">
-     <app-input @Buscar="ReceivingData"></app-input>
+     <app-input @Buscar="ReceivingData" v-show="listing"></app-input>
      <app-character @openDetails="ReceivingIdCharacter" v-show="listing"
      :Pesquisa="dados"
      >
@@ -10,10 +10,9 @@
      v-show="listing"
      :Pesquisa="dados" 
      ></app-comics>
-     <app-details v-show="!listing"
-     :DetailsIdCharacter="IdCharacter"
+     <app-comic-details v-show="!listing"
      :DetailsIdComics="idComics"
-     ></app-details>
+     ></app-comic-details>
    </div>
 </template>
 
@@ -21,9 +20,9 @@
 import AppInput from './components/Input'
 import AppCharacter from './components/Character'
 import AppComics from './components/Comics'
-import AppDetails from './components/Details'
+import AppComicDetails from './components/ComicDetails'
 export default {
-    components:{AppInput,AppCharacter,AppComics,AppDetails},
+    components:{AppInput,AppCharacter,AppComics,AppComicDetails},
     data(){
       return {
         dados : '',
@@ -39,7 +38,7 @@ export default {
      },
      ReceivingIdComics(id){
       this.idComics = id
-      this.listing = id
+      this.listing = false
      },
      ReceivingData(name){
      this.dados = name
