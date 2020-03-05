@@ -27,6 +27,7 @@
       </b-col>
     </b-row>
   </b-card>
+  <b-button @click="backList">Voltar para lista</b-button>
    </div>
 </template>
 
