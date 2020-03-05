@@ -1,5 +1,6 @@
 <template>
    <div>
+     <b-button @click="backList">Voltar para a Home</b-button>
      <b-card v-for="detalhes in detalhes" :key="detalhes.index"
       :img-src="detalhes.thumbnail.path + '/portrait_incredible.' + detalhes.thumbnail.extension" img-alt="Card image" img-left class="mb-3">
       <h2>Comic:</h2>
@@ -40,6 +41,9 @@ export default {
            this.detalhes = res.data.data.results
            console.log(this.detalhes)
          })
+       },
+       backList(){
+         this.$emit('backList')
        }
       }
     }

@@ -10,7 +10,8 @@
      v-show="listing"
      :Pesquisa="dados" 
      ></app-comics>
-     <app-comic-details v-show="!listing"
+     <app-comic-details @backList="VoltaLista"
+     v-show="!listing"
      :DetailsIdComics="idComics"
      ></app-comic-details>
    </div>
@@ -42,6 +43,9 @@ export default {
      },
      ReceivingData(name){
      this.dados = name
+     },
+     VoltaLista(){
+       this.listing = true
      }
     }
 }

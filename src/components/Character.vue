@@ -15,7 +15,6 @@
           <b-card-text>
             {{character.description}}
           </b-card-text>
-          <b-button @click="openDetails(character.id)">Detalhes</b-button>  
         </b-card-body>
       </b-col>
     </b-row>
@@ -53,7 +52,6 @@ export default {
           }else{
             this.sucesso = false
           }
-          console.log(this.loading)
         }), error =>{
            this.loading = false;
            console.log(error)
